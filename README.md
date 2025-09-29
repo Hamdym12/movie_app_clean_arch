@@ -1,16 +1,55 @@
-# movie_app_clean_arch
+# Prime_Wave_Task
 
-A new Flutter project.
+>Flutter Articles App
 
-## Getting Started
+`A Flutter app that fetches and displays paginated articles with robust error handling,
+retry mechanisms, in-memory caching, dependency injection, pull-to-refresh support,
+state management, and a clean architecture approach.`
 
-This project is a starting point for a Flutter application.
+**Features Implemented:**
 
-A few resources to get you started if this is your first Flutter project:
+* Paginated API fetching:
+- Fetches articles from https://api.slingacademy.com/v1/sample-data/blog-posts?offset=$num&limit=$num using a repository + use case + Cubit architecture.
+- Displays title + first 100 chars of body.
+- Supports infinite scroll — loads the next page(by limit) when the user scrolls near the bottom.
+- avoid duplicates when scrolling to fetch more articles(check and remove by id).
+- added a floating button to scroll to the top of the list for easy user experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Retry mechanism with exponential backoff:
+- Network errors trigger automatic retries with delays.
+- Shows a “Retrying… Attempt N” indicator to give the user feedback during retries.
+- Uses Dio for networking and a custom retry logic in ApiClient.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Friendly error handling:
+- 4xx/5xx errors are caught and converted into ServerFailure.
+- Displays friendly error messages in the UI.
+- Includes a retry button to allow users to retry failed requests.
+
+* In-memory caching:
+- Prevents duplicate API calls when scrolling back up.
+- Ensures smoother user experience during pagination.
+
+* Robust architecture:
+- Clean architecture with Data Source → Repository → Use Case → Cubit → UI.
+- Uses Either<Failure, Model> for safe error handling.
+- All parsing is null-safe and type-checked to prevent runtime crashes.
+
+* State Management
+- Uses flutter_bloc (Cubit) for managing UI state.
+- Provides clear separation of UI and business logic.
+
+* Dependency Injection
+- Uses get_it and injectable for DI.
+- All major components (ApiClient, DataSource, Repository, Use Case, Cubit) are singleton & lazySingleton scoped.
+- Ensures loose coupling and testability.
+
+* Pull-to-refresh:
+- Users can pull down to refresh the articles list.
+- Resets pagination and fetches the latest data.
+
+* UI Enhancements
+- Infinite scroll loading indicator.
+- Retry button visible on error.
+- Toast messages for retry attempts.
+- Details screen to display full article body.
+- Widget shows (fetchedItems / totalItems) so users can see how much of the list has been loaded.

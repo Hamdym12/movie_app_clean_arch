@@ -51,7 +51,10 @@ class ArticlesCubit extends Cubit<ArticlesStates> {
           );
         },
         (r) {
-          final updatedArticles = [...state.articles, ...r.articles];
+          final updatedArticles = [
+            ...state.articles,
+            ...r.articles.where((article) => !state.articles.any((e)=> e.id == article.id))
+          ];
           final nextOffset = state.offset + r.articles.length;
           emit(
             ArticlesSuccessState(

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../../core/error/failure.dart';
-import '../../data/models/article_response_model.dart';
+import '../../data/models/article_page_model.dart';
 import '../repository/base_articles_repository.dart';
 
 @lazySingleton

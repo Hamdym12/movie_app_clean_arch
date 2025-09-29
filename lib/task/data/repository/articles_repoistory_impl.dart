@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_clean_arch/core/error/failure.dart';
-import 'package:movie_app_clean_arch/task/data/models/article_response_model.dart';
+import 'package:flutter_prime_wave_task/core/error/failure.dart';
+import 'package:flutter_prime_wave_task/task/data/models/article_page_model.dart';
 import '../../domain/repository/base_articles_repository.dart';
 import '../datasource/articles_base_data_source.dart';
 

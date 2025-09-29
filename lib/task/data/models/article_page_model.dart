@@ -1,4 +1,4 @@
-import '../../domain/entities/article_response.dart';
+import '../../domain/entities/article_page.dart';
 import 'article_model.dart';
 
 class ArticlesPageModel extends ArticlesPage {

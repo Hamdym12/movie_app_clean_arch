@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:movie_app_clean_arch/task/presentation/screens/articles_screen.dart';
+import 'package:flutter_prime_wave_task/task/presentation/screens/articles_screen.dart';
 import 'core/di/service_locater.dart';
 
 void main()async{

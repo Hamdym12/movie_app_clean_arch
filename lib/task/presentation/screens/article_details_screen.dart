@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_clean_arch/task/domain/entities/article.dart';
+import 'package:flutter_prime_wave_task/task/domain/entities/article.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {
   const ArticleDetailsScreen({super.key, required this.article});

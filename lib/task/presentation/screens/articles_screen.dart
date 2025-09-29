@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app_clean_arch/core/di/service_locater.dart';
-import 'package:movie_app_clean_arch/core/widgets/custom_error_widget.dart';
-import 'package:movie_app_clean_arch/task/presentation/controller/states/articles_states.dart';
+import 'package:flutter_prime_wave_task/core/di/service_locater.dart';
+import 'package:flutter_prime_wave_task/core/widgets/custom_error_widget.dart';
+import 'package:flutter_prime_wave_task/task/presentation/controller/states/articles_states.dart';
 import '../../../core/helpers/toast_helper.dart';
 import '../components/articles_list_widget.dart';
 import '../controller/cubits/articles_cubit.dart';
