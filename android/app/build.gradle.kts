@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.new.primewave.task"
+    namespace = "com.primewave.task"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.new.primewave.task"
+        applicationId = "com.primewave.task"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
