@@ -33,9 +33,9 @@ class ArticlesSuccessState extends ArticlesStates{
   List<Object?> get props => [super.props];
 }
 class ArticlesErrorState extends ArticlesStates{
-  final String message;
-  const ArticlesErrorState(this.message,{super.articles,super.offset,super.limit,super.totalArticles,super.isFetching});
+  final String errorMessage;
+  const ArticlesErrorState(this.errorMessage,{super.articles,super.offset,super.limit,super.totalArticles,super.isFetching});
   @override
-  List<Object?> get props => [super.props,message];
+  List<Object?> get props => [super.props,errorMessage];
 
 }

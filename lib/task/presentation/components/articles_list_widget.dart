@@ -45,20 +45,48 @@ class ArticlesListWidget extends StatelessWidget {
          separatorBuilder: (context,index)=>const Divider(),
          itemCount: articles.length
           ),
-          BlocBuilder<ArticlesCubit, ArticlesStates>(
-            builder: (context, state) {
-              if (state.isFetching) {
-                return Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 20, // padding from bottom
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              }
-              return const SizedBox.shrink();
-            },
-          ),
-        ],
+        BlocBuilder<ArticlesCubit, ArticlesStates>(
+        builder: (context, state) {
+          if (state.isFetching) {
+            return Positioned(
+              left: 0,
+              right: 0,
+              bottom: 20,
+              child: Center(child: const CircularProgressIndicator()),
+            );
+          }
+          return const SizedBox.shrink();
+         },
+         ),
+        BlocBuilder<ArticlesCubit, ArticlesStates>(
+          builder: (context, state) {
+           return PositionedDirectional(
+            start: 0,
+            end: 40,
+            bottom: 40,
+            child: Align(
+             alignment: AlignmentDirectional.centerEnd,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                  child: Text("${state.limit}/${state.totalArticles}")
+              )
+            ),
+           );
+         },
+          )
+      ],
       ),
     );
   }

@@ -22,7 +22,7 @@ abstract class RegisterModule {
       PrettyDioLogger(
         requestHeader: false,
         requestBody: true,
-        responseBody: false,
+        responseBody: true,
         responseHeader: false,
         maxWidth: 90,
         enabled: kDebugMode,
