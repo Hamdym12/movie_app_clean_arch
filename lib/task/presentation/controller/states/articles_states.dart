@@ -37,5 +37,11 @@ class ArticlesErrorState extends ArticlesStates{
   const ArticlesErrorState(this.errorMessage,{super.articles,super.offset,super.limit,super.totalArticles,super.isFetching});
   @override
   List<Object?> get props => [super.props,errorMessage];
+}
+
+class LoadMoreArticlesState extends ArticlesStates{
+  const LoadMoreArticlesState({super.articles,super.offset,super.limit,super.totalArticles,super.isFetching});
+  @override
+  List<Object?> get props => [super.props];
 
 }

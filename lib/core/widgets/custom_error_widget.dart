@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomErrorWidget extends StatelessWidget {
-  const CustomErrorWidget({super.key, this.errorMessage});
+  const CustomErrorWidget({super.key, this.errorMessage, this.onRetry});
   final String? errorMessage;
+  final Function()? onRetry;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -18,6 +19,10 @@ class CustomErrorWidget extends StatelessWidget {
              errorMessage ?? 'Something went wrong',
              textAlign: TextAlign.center
           ),
+          ),
+          ElevatedButton(
+            onPressed: onRetry ?? (){},
+            child: const Text('Retry'),
           ),
         ],
       ),

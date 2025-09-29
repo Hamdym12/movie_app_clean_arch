@@ -30,7 +30,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
               }
             },
             listenWhen: (prev,currentState)=>currentState is ArticlesErrorState,
-            buildWhen: (prev,currentState)=>currentState is! ArticlesLoadingState,
+            buildWhen: (prev,currentState)=>currentState is! LoadMoreArticlesState,
             builder: (context, state) {
               switch (state) {
                 case ArticlesLoadingState _:
@@ -38,7 +38,10 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                 case ArticlesSuccessState _:
                   return ArticlesListWidget(articles: state.articles);
                 case ArticlesErrorState _:
-                  return CustomErrorWidget(errorMessage: state.errorMessage);
+                  return CustomErrorWidget(
+                      errorMessage: state.errorMessage,
+                      onRetry: () => context.read<ArticlesCubit>().getArticles()
+                  );
                 default:
                   return const SizedBox();
               }

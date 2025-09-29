@@ -8,10 +8,10 @@ class ArticlesCubit extends Cubit<ArticlesStates> {
   ArticlesCubit(this._getArticlesUseCase) : super(ArticlesInitialState());
   final GetArticlesUseCase _getArticlesUseCase;
 
-  Future<void> getArticles({int offset = 0, int limit = 25}) async {
+  Future<void> getArticles({int offset = 0, int limit = 25, bool isLoadMore=false}) async {
     if (state.isFetching || state.limit >= state.totalArticles) return;
     final nextLimit = (state.limit + limit).clamp(0, state.totalArticles);
-
+    if(!isLoadMore){
       emit(
        ArticlesLoadingState(
         isFetching: true,
@@ -21,7 +21,17 @@ class ArticlesCubit extends Cubit<ArticlesStates> {
         articles: state.articles,
       ),
      );
-
+    }else{
+      emit(
+        LoadMoreArticlesState(
+          isFetching: true,
+          offset: offset,
+          limit: nextLimit,
+          totalArticles: state.totalArticles,
+          articles: state.articles,
+        ),
+      );
+    }
     try {
       final response = await _getArticlesUseCase.execute(
         offset: state.offset,
@@ -66,5 +76,17 @@ class ArticlesCubit extends Cubit<ArticlesStates> {
         ),
       );
     }
+  }
+
+  void reset() {
+    emit(
+      ArticlesInitialState(
+        isFetching: false,
+        offset: 0,
+        limit: 0,
+        totalArticles: 100,
+        articles: [],
+      ),
+    );
   }
 }
