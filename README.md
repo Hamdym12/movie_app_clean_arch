@@ -53,3 +53,10 @@ state management, and a clean architecture approach.`
 - Toast messages for retry attempts.
 - Details screen to display full article body.
 - Widget shows (fetchedItems / totalItems) so users can see how much of the list has been loaded.
+
+* what I would change for large datasets ?
+- Instead of in-memory caching, I'll use a local-storgae solution like Hive, SQLite, or SharedPreferences to store
+  already fetched pages, reducing network calls for previously loaded and chached data.
+- I'll also use background fetching to preload next page data while user is scrolling so the UI exprience become smoother.
+- Instead of fetching the entire dataset I could request only needed data to be fetched from backend side.
+- Apply Debounce to avoid excessive network calls when user scroll quickly.
